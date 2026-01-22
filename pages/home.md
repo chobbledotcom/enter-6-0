@@ -1,6 +1,9 @@
 ---
 permalink: "/"
 layout: "home.html"
+eleventyNavigation:
+  key: Home
+  order: 1
 ---
 
 # EnteR 6.0
