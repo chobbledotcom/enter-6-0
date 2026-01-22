@@ -1,2 +1,59 @@
-@charset "utf-8";
-@use "sass:color";
+// EnteR 6.0 - Dark Cyberpunk Theme
+// White bold serif blocky text on black backgrounds with lots of space
+:root {
+  --color-bg: #000000;
+  --color-bg-alt: #0a0a0a;
+  --color-card-bg: #111111;
+  --color-text: #ffffff;
+  --color-text-muted: #888888;
+  --color-link: #ffffff;
+  --color-link-hover: #00ff00;
+  --color-primary: #ffffff;
+  --color-primary-dark: #cccccc;
+  --color-secondary: #00ff00;
+  --color-accent: #00ff00;
+
+  --border: 2px solid #ffffff;
+  --border-radius: 0;
+  --box-shadow: none;
+
+  --font-family-heading: Georgia, "Times New Roman", Times, serif;
+  --font-family-body: Georgia, "Times New Roman", Times, serif;
+  --font-weight-heading: 700;
+  --line-height: 1.4;
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-decoration-style: solid;
+
+  --space-unit: 12px;
+  --space-xs: 12px;
+  --space-sm: 24px;
+  --space-md: 48px;
+  --space-lg: 72px;
+  --space-xl: 96px;
+}
+
+body {
+  background: #000000;
+}
+
+header {
+  --color-text: #ffffff;
+  background: #000000;
+}
+
+footer {
+  --color-text: #888888;
+  background: #000000;
+}
+
+article {
+  background: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* body_classes: header-centered-dark */
