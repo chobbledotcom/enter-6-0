@@ -14,6 +14,7 @@ const rootExcludes = [
   "package.json",
   "bun.lock",
   "old_site",
+  "chobble-template",
 ];
 
 /**
@@ -80,11 +81,17 @@ export const createTempDir = (prefix = "chobble-template-") =>
   mkdtempSync(join(tmpdir(), prefix));
 
 /**
- * Clones the chobble-template repository
+ * Clones the chobble-template repository or copies local submodule
  * @param {string} dest - Destination directory
  * @returns {boolean} True if successful
  */
 export const cloneTemplate = (dest) => {
+  const localSubmodule = path("chobble-template");
+  if (existsSync(localSubmodule)) {
+    console.log("Copying local chobble-template submodule...");
+    copyDir(localSubmodule, dest, [".git"]);
+    return true;
+  }
   console.log("Cloning chobble-template...");
   const result = git.clone(templateRepo, dest);
   if (result.exitCode !== 0) {
@@ -103,6 +110,15 @@ export const installDeps = (dir) => {
   const result = bun.install(dir);
   if (result.exitCode !== 0) {
     throw new Error("Failed to install dependencies");
+  }
+  // Install playwright browsers
+  console.log("Installing Playwright browsers...");
+  const playwrightResult = Bun.spawnSync(["bunx", "playwright", "install", "chromium"], {
+    cwd: dir,
+    stdio: ["inherit", "inherit", "inherit"],
+  });
+  if (playwrightResult.exitCode !== 0) {
+    console.warn("Warning: Failed to install Playwright browsers");
   }
   return true;
 };

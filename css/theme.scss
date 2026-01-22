@@ -1,2 +1,70 @@
-@charset "utf-8";
-@use "sass:color";
+// EnteR 6.0 - Dark Cyberpunk Theme
+// Bungee headers, monospace body, black backgrounds
+
+@font-face {
+  font-family: 'Bungee';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/bungee-latin-400-normal.woff2') format('woff2'),
+       url('/assets/fonts/bungee-latin-400-normal.woff') format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --color-bg: #000000;
+  --color-bg-alt: #0a0a0a;
+  --color-card-bg: #111111;
+  --color-text: #ffffff;
+  --color-text-muted: #888888;
+  --color-link: #ffffff;
+  --color-link-hover: #00ff00;
+  --color-primary: #ffffff;
+  --color-primary-dark: #cccccc;
+  --color-secondary: #00ff00;
+  --color-accent: #00ff00;
+
+  --border: 2px solid #ffffff;
+  --border-radius: 0;
+  --box-shadow: none;
+
+  --font-family-heading: 'Bungee', Impact, sans-serif;
+  --font-family-body: 'Courier New', Courier, monospace;
+  --font-weight-heading: 400;
+  --line-height: 1.5;
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-decoration-style: solid;
+
+  --space-unit: 12px;
+  --space-xs: 12px;
+  --space-sm: 24px;
+  --space-md: 48px;
+  --space-lg: 72px;
+  --space-xl: 96px;
+}
+
+body {
+  background: #000000;
+}
+
+header {
+  --color-text: #ffffff;
+  background: #000000;
+}
+
+footer {
+  --color-text: #888888;
+  background: #000000;
+}
+
+article {
+  background: #000000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* body_classes: header-centered-dark */

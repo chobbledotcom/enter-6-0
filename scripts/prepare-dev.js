@@ -18,6 +18,7 @@ const rootExcludes = [
   "package*.json",
   "bun.lock",
   "old_site",
+  "chobble-template",
 ];
 
 export const prep = () => {
