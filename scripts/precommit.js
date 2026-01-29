@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 /**
- * Precommit hook - runs lint and copy-paste detection.
+ * Precommit hook - runs lint, copy-paste detection, and build.
  * Use --verbose flag to see full output from all checks.
  */
 
@@ -12,7 +12,9 @@ import {
 
 const verbose = process.argv.includes("--verbose");
 
-const steps = [COMMON_STEPS.lintFix, COMMON_STEPS.cpd];
+const buildStep = { name: "build", cmd: "bun", args: ["run", "build"] };
+
+const steps = [COMMON_STEPS.lintFix, COMMON_STEPS.cpd, buildStep];
 
 console.log(
   verbose
