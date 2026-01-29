@@ -16,6 +16,7 @@
 }
 
 :root {
+  --color-bg: #000000;
   --bg: #000000;
   --bg-alt: #010101;
   --color-card-bg: #111111;
@@ -78,7 +79,9 @@ h6 {
 
 /* body_classes: header-centered-dark */
 
-.image-wrapper,
-img {
-  max-width: 100%;
+body.page .content {
+  .image-wrapper,
+  img {
+    max-width: 100%;
+  }
 }
