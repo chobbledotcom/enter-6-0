@@ -85,3 +85,17 @@ body.page .content {
     max-width: 100%;
   }
 }
+
+/* Feature icons: black icons on white background */
+.design-system .feature .icon {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* CTA: subtle black to dark grey gradient with white text */
+.design-system .cta {
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
+  color: #ffffff;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.8);
+}
