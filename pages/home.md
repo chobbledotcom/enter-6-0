@@ -36,12 +36,10 @@ blocks:
         title: "THE BUILD"
         description: "Every grill is custom-made. Every cabinet wrapped in scratch-resistant, impact-resistant material. Not generic. Not catalog. Built for the road."
 
-  - type: cta
-    title: "Coming to a fair near you"
-    description: "The next generation of fairground audio is here."
-    button:
-      text: "Get in Touch"
-      href: "/contact/"
-      variant: "primary"
-      size: "lg"
+  - type: video-background
+    video_id: "https://iframe.mediadelivery.net/embed/588034/a79f990b-d7d7-4bd0-a7e3-af2c875b1580?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+    content: |
+      <h2>Coming to a fair near you</h2>
+      <p>The next generation of fairground audio is here.</p>
+    video_title: "Coming to a fair near you"
 ---
