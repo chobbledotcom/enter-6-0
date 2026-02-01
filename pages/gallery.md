@@ -5,12 +5,14 @@ eleventyNavigation:
   key: Gallery
   order: 2
 meta_title: "Gallery - EnteR 6.0"
-meta_description: "Photos of the EnteR 6.0 next generation fairground audio system."
+meta_description: "Photos and videos of the EnteR 6.0 Extreme fairground ride."
 blocks:
-  - type: section-header
-    title: "GALLERY"
-    subtitle: "EnteR 6.0 in the wild"
-    container: true
+  - type: video-background
+    video_id: "fOdSi9Uaxds"
+    content: |
+      <h1>GALLERY</h1>
+      <p>EnteR 6.0 in the wild</p>
+    video_title: "EnteR 6.0 Gallery"
 
   - type: html
     container: false

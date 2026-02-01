@@ -10,4 +10,9 @@ eleventyNavigation:
 
 ## Get in Touch
 
-Want to book EnteR 6.0 for your event? Have questions about the system? Drop us a message.
+Want to book EnteR 6.0 for your event? Have questions about the ride? Drop us a message.
+
+## Find Us Online
+
+- [EnteR 6.0 on Facebook](https://www.facebook.com/p/EnteR-60-61573987298846/)
+- [EnteR 6.0 on Coasterpedia](https://coasterpedia.net/wiki/EnteR_6.0)

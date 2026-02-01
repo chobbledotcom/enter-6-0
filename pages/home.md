@@ -9,37 +9,37 @@ blocks:
     video_id: "https://iframe.mediadelivery.net/embed/588034/77d15722-1b42-4379-9e77-d6ae1ea8a865?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
       <h1>EnteR 6.0</h1>
-      <p>The next generation of fairground audio. Engineered from the ground up for maximum impact.</p>
-    video_title: "EnteR 6.0 Sound System"
+      <p>Six arms. Two axes. One unforgettable ride.</p>
+    video_title: "EnteR 6.0 Extreme Ride"
 
   - type: section-header
-    title: "SYSTEM UPDATE 6.0"
-    subtitle: "Engineered from the ground up for maximum impact"
+    title: "THE EXTREME"
+    subtitle: "Redefining the limits of excitement"
     container: true
 
   - type: features
     container: true
     items:
-      - icon: "&#128264;"
-        title: "LOW END"
-        description: "12 x 21\" ultra-long throw subs. Custom-designed front grills. Reinforced internal bracing. Engineered for deep, clean impact at extreme SPL."
-      - icon: "&#127932;"
-        title: "MIDS"
-        description: "8 x 15\" mid cabinets delivering chest-hit bass with zero distortion. Laser-cut custom grills. Optimized ports for faster transient response."
-      - icon: "&#128266;"
-        title: "TOP END"
-        description: "4 x dual compression drivers for razor-sharp clarity. 4 x dual 10\" coaxials providing spatial imaging that tracks the entire ride movement."
-      - icon: "&#9889;"
-        title: "POWER"
-        description: "5 x Powersoft T904S amplifiers. DSP locked to EnteR's signature curve. Limiter profiles built for long sessions at high output. Total control. Zero sag. Maximum punch."
-      - icon: "&#128295;"
-        title: "THE BUILD"
-        description: "Every grill is custom-made. Every cabinet wrapped in scratch-resistant, impact-resistant material. Not generic. Not catalog. Built for the road."
+      - icon: "&#127922;"
+        title: "SIX ARMS"
+        description: "Where most Extremes run four arms, EnteR 6.0 runs six. More seats, more movement, more spectacle. A rare configuration that sets this ride apart from anything else on the circuit."
+      - icon: "&#128256;"
+        title: "DUAL-AXIS SPIN"
+        description: "Riders are propelled through the air, spinning on two axes at once. High G-forces, unpredictable motion, and a ride sensation that never repeats. Buckle up."
+      - icon: "&#127753;"
+        title: "DARK TECHNO THEME"
+        description: "Smoke, lights, and a pounding dark techno soundtrack create an atmosphere like no other. EnteR 6.0 is a full sensory experience from the moment you step into the queue line."
+      - icon: "&#9881;"
+        title: "VERSATILE CONTROL"
+        description: "The ride sequence can be tailored to your event. High and fast for the adrenaline seekers, slow and low for newcomers. Two ride programs means two experiences for the price of one."
+      - icon: "&#128737;"
+        title: "SAFETY FIRST"
+        description: "Manufactured in the UK by Tivoli Enterprises. Dual hydraulic and mechanical locking on every seat, continuously monitored by the onboard computer. Thorough daily inspections carried out and recorded."
 
   - type: video-background
     video_id: "https://iframe.mediadelivery.net/embed/588034/a79f990b-d7d7-4bd0-a7e3-af2c875b1580?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
       <h2>Coming to a fair near you</h2>
-      <p>The next generation of fairground audio is here.</p>
+      <p>Heart-pounding, adrenaline-pumping action. The Extreme experience awaits.</p>
     video_title: "Coming to a fair near you"
 ---
