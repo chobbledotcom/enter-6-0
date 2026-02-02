@@ -1,6 +1,6 @@
 ---
 permalink: "/gallery/"
-layout: "page.html"
+layout: "design-system-base.html"
 eleventyNavigation:
   key: Gallery
   order: 2
@@ -8,24 +8,24 @@ meta_title: "Gallery - EnteR 6.0"
 meta_description: "Photos and videos of the EnteR 6.0 Extreme fairground ride."
 blocks:
   - type: video-background
+    full_width: true
     video_id: "fOdSi9Uaxds"
     content: |
-      <h1>GALLERY</h1>
-      <p>EnteR 6.0 in the wild</p>
+      # Gallery
+
+      EnteR 6.0 in the wild
     video_title: "EnteR 6.0 Gallery"
 
-  - type: html
-    container: false
-    content: |
-      <img src="/images/IMG_2835.jpeg" alt="EnteR 6.0 sound system full setup" loading="lazy" style="width:100%;display:block;">
+  - type: image-background
+    full_width: true
+    image: "src/images/IMG_2835.jpeg"
+    image_alt: "EnteR 6.0 sound system full setup"
 
   - type: section-header
     title: "THE SYSTEM"
     subtitle: "Built for the road. Designed for impact."
-    container: true
 
   - type: image-cards
-    container: true
     image_aspect_ratio: "4/3"
     items:
       - image: "/images/IMG_0249.jpeg"
@@ -38,18 +38,16 @@ blocks:
         title: "Speaker array"
         description: "Mid and top end cabinets ready for deployment."
 
-  - type: html
-    container: false
-    content: |
-      <img src="/images/IMG_2860.jpeg" alt="EnteR 6.0 panoramic view" loading="lazy" style="width:100%;display:block;">
+  - type: image-background
+    full_width: true
+    image: "src/images/IMG_2860.jpeg"
+    image_alt: "EnteR 6.0 panoramic view"
 
   - type: section-header
     title: "ON THE ROAD"
     subtitle: "From build to showground"
-    container: true
 
   - type: image-cards
-    container: true
     image_aspect_ratio: "4/3"
     items:
       - image: "/images/IMG_0791.jpeg"
@@ -65,18 +63,16 @@ blocks:
         title: "Stacked and wired"
         description: "System assembly on the ground."
 
-  - type: html
-    container: false
-    content: |
-      <img src="/images/IMG_2819.jpeg" alt="EnteR 6.0 system close-up" loading="lazy" style="width:100%;display:block;">
+  - type: image-background
+    full_width: true
+    image: "src/images/IMG_2819.jpeg"
+    image_alt: "EnteR 6.0 system close-up"
 
   - type: section-header
     title: "THE DETAILS"
     subtitle: "Every component purpose-built"
-    container: true
 
   - type: image-cards
-    container: true
     image_aspect_ratio: "1/1"
     items:
       - image: "/images/IMG_0805.jpeg"
@@ -90,7 +86,6 @@ blocks:
         description: "Clean cable management for reliable operation."
 
   - type: image-cards
-    container: true
     image_aspect_ratio: "16/9"
     items:
       - image: "/images/IMG_0830.jpeg"
@@ -100,10 +95,10 @@ blocks:
         title: "Full send"
         description: "Maximum output at the fair."
 
-  - type: html
-    container: false
-    content: |
-      <img src="/images/IMG_0808.jpeg" alt="EnteR 6.0 system detail" loading="lazy" style="width:100%;display:block;">
+  - type: image-background
+    full_width: true
+    image: "src/images/IMG_0808.jpeg"
+    image_alt: "EnteR 6.0 system detail"
 
   - type: cta
     title: "Want to see it in person?"
@@ -111,6 +106,6 @@ blocks:
     button:
       text: "Get in Touch"
       href: "/contact/"
-      variant: "primary"
-      size: "lg"
+      variant: secondary
+      size: lg
 ---

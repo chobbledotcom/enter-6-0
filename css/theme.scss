@@ -16,23 +16,34 @@
 }
 
 :root {
+  // Content width
+  --width-content: 1100px;
+
+  // Colours
   --color-bg: #000000;
-  --bg: #000000;
-  --bg-alt: #010101;
   --color-card-bg: #111111;
+  --color-accent: #020202;
+  --body-background: #000000;
+  --body-background-alt: #010101;
   --color-text: #ffffff;
   --color-text-muted: #888888;
   --color-link: #ffffff;
   --color-link-hover: #00ff00;
   --color-primary: #ffffff;
   --color-primary-dark: #cccccc;
+  --color-tint: #111111;
   --color-secondary: #00ff00;
-  --color-accent: #020202;
+  --color-contrast-text: #000000;
+  --color-contrast-text-muted: rgba(0, 0, 0, 0.7);
+  --color-gradient-start: rgba(0, 255, 0, 0.15);
+  --color-gradient-end: rgba(0, 200, 0, 0.15);
 
+  // Borders
   --border: 2px solid #ffffff;
   --border-radius: 0;
   --box-shadow: none;
 
+  // Typography
   --font-family-heading: "Bungee", Impact, sans-serif;
   --font-family-body: "Courier New", Courier, monospace;
   --font-weight-heading: 400;
@@ -41,6 +52,7 @@
   --link-decoration-hover: underline;
   --link-decoration-style: solid;
 
+  // Spacing
   --space-unit: 12px;
   --space-xs: 12px;
   --space-sm: 24px;
@@ -77,8 +89,6 @@ h6 {
   letter-spacing: 0.05em;
 }
 
-/* body_classes: header-centered-dark */
-
 body.page .content {
   .image-wrapper,
   img {
@@ -86,7 +96,6 @@ body.page .content {
   }
 }
 
-/* Feature icons: black icons on white background */
 .design-system .feature .icon {
   color: #ffffff;
   background: #000000;

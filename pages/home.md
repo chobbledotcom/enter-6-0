@@ -1,24 +1,24 @@
 ---
 permalink: "/"
-layout: "page.html"
+layout: "design-system-base.html"
 eleventyNavigation:
   key: Home
   order: 1
 blocks:
   - type: video-background
+    full_width: true
     video_id: "https://iframe.mediadelivery.net/embed/588034/77d15722-1b42-4379-9e77-d6ae1ea8a865?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
-      <h1>EnteR 6.0</h1>
-      <p>Six arms. Two axes. One unforgettable ride.</p>
+      # EnteR 6.0
+
+      Six arms. Two axes. One unforgettable ride.
     video_title: "EnteR 6.0 Extreme Ride"
 
   - type: section-header
     title: "THE EXTREME"
     subtitle: "Redefining the limits of excitement"
-    container: true
 
   - type: features
-    container: true
     items:
       - icon: "&#127922;"
         title: "SIX ARMS"
@@ -37,9 +37,20 @@ blocks:
         description: "Manufactured in the UK by Tivoli Enterprises. Dual hydraulic and mechanical locking on every seat, continuously monitored by the onboard computer. Thorough daily inspections carried out and recorded."
 
   - type: video-background
+    full_width: true
     video_id: "https://iframe.mediadelivery.net/embed/588034/a79f990b-d7d7-4bd0-a7e3-af2c875b1580?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
-      <h2>Coming to a fair near you</h2>
-      <p>Heart-pounding, adrenaline-pumping action. The Extreme experience awaits.</p>
+      ## Coming to a fair near you
+
+      Heart-pounding, adrenaline-pumping action. The Extreme experience awaits.
     video_title: "Coming to a fair near you"
+
+  - type: cta
+    title: "Book EnteR 6.0"
+    description: "Want to see it in person? Get in touch to book the ride for your event."
+    button:
+      text: "Get in Touch"
+      href: "/contact/"
+      variant: secondary
+      size: lg
 ---
