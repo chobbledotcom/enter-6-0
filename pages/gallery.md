@@ -20,6 +20,7 @@ blocks:
     full_width: true
     image: "src/images/IMG_2835.jpeg"
     image_alt: "EnteR 6.0 sound system full setup"
+    content: " "
 
   - type: section-header
     title: "THE SYSTEM"
@@ -42,6 +43,7 @@ blocks:
     full_width: true
     image: "src/images/IMG_2860.jpeg"
     image_alt: "EnteR 6.0 panoramic view"
+    content: " "
 
   - type: section-header
     title: "ON THE ROAD"
@@ -67,6 +69,7 @@ blocks:
     full_width: true
     image: "src/images/IMG_2819.jpeg"
     image_alt: "EnteR 6.0 system close-up"
+    content: " "
 
   - type: section-header
     title: "THE DETAILS"
@@ -99,6 +102,7 @@ blocks:
     full_width: true
     image: "src/images/IMG_0808.jpeg"
     image_alt: "EnteR 6.0 system detail"
+    content: " "
 
   - type: cta
     title: "Want to see it in person?"
