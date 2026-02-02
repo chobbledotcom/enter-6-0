@@ -20,19 +20,19 @@ blocks:
 
   - type: features
     items:
-      - icon: "&#127922;"
+      - icon: "mdi:ferris-wheel"
         title: "SIX ARMS"
         description: "Where most Extremes run four arms, EnteR 6.0 runs six. More seats, more movement, more spectacle. A rare configuration that sets this ride apart from anything else on the circuit."
-      - icon: "&#128256;"
+      - icon: "mdi:rotate-3d-variant"
         title: "DUAL-AXIS SPIN"
         description: "Riders are propelled through the air, spinning on two axes at once. High G-forces, unpredictable motion, and a ride sensation that never repeats. Buckle up."
-      - icon: "&#127753;"
+      - icon: "mdi:music-note"
         title: "DARK TECHNO THEME"
         description: "Smoke, lights, and a pounding dark techno soundtrack create an atmosphere like no other. EnteR 6.0 is a full sensory experience from the moment you step into the queue line."
-      - icon: "&#9881;"
+      - icon: "mdi:tune-variant"
         title: "VERSATILE CONTROL"
         description: "The ride sequence can be tailored to your event. High and fast for the adrenaline seekers, slow and low for newcomers. Two ride programs means two experiences for the price of one."
-      - icon: "&#128737;"
+      - icon: "mdi:shield-check"
         title: "SAFETY FIRST"
         description: "Manufactured in the UK by Tivoli Enterprises. Dual hydraulic and mechanical locking on every seat, continuously monitored by the onboard computer. Thorough daily inspections carried out and recorded."
 
