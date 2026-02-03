@@ -7,7 +7,7 @@ eleventyNavigation:
 blocks:
   - type: video-background
     full_width: true
-    video_id: "https://iframe.mediadelivery.net/embed/588034/77d15722-1b42-4379-9e77-d6ae1ea8a865?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+    video_id: "https://iframe.mediadelivery.net/embed/588034/72c13f1f-5200-4268-9061-0f45809df741?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
       # EnteR 6.0
 
