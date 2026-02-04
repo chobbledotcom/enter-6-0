@@ -19,24 +19,24 @@
 
   --color-bg: #0a0a0a;
   --color-card-bg: #12101a;
-  --color-accent: #150a18;
+  --color-accent: #0a1808;
   // heropatterns "Plus" - geometric neon crosses
-  --body-background: #1a0a1a
+  --body-background: #0a1a0a
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z' fill='%2300ff00' fill-opacity='0.07'/%3E%3C/svg%3E");
-  --body-background-alt: #221228
+  --body-background-alt: #122818
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z' fill='%2300ff00' fill-opacity='0.07'/%3E%3C/svg%3E");
-  --color-text: #ff00ff;
+  --color-text: #00ff00;
   --color-link: #00ffff;
   --color-tint: #002a2a;
   --color-link-hover: #ffff00;
-  --color-contrast-text: #0a0a0a;
+  --color-contrast-text: #ffffff;
   --color-contrast-text-muted: rgba(0, 0, 0, 0.7);
-  --color-gradient-start: rgba(255, 0, 255, 0.2);
+  --color-gradient-start: rgba(0, 255, 0, 0.2);
   --color-gradient-end: rgba(0, 255, 255, 0.2);
 
-  --border: 2px solid #ff00ff;
+  --border: 2px solid #00ff00;
   --border-radius: 12px;
-  --box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+  --box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
 
   --font-family-heading: "Bungee", Impact, sans-serif;
   --font-family-body: "Courier New", Courier, monospace;
@@ -62,4 +62,10 @@ header {
 .image-background,
 .video-background {
   --color-text: #ffffff;
+
+  img {
+    max-width: 40rem;
+    margin: 0 auto;
+    justify-self: center;
+  }
 }

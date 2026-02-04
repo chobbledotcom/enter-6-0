@@ -9,9 +9,7 @@ blocks:
     full_width: true
     video_id: "https://iframe.mediadelivery.net/embed/588034/72c13f1f-5200-4268-9061-0f45809df741?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
-      # EnteR 6.0
-
-      Six arms. Two axes. One unforgettable ride.
+      ![Enter 6.0](/assets/logo.png)
     video_title: "EnteR 6.0 Extreme Ride"
 
   - type: section-header
