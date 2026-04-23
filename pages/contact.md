@@ -8,10 +8,12 @@ eleventyNavigation:
   order: 2
 blocks:
   - type: section-header
-    title: "Get in Touch"
-    subtitle: "Want to book EnteR 6.0 for your event? Have questions about the ride? Drop us a message."
+    intro: |
+      ## Get in Touch
 
-  - type: contact_form
+      Want to book EnteR 6.0 for your event? Have questions about the ride? Drop us a message.
+
+  - type: contact-form
     content: |
       ## Book EnteR 6.0
 
