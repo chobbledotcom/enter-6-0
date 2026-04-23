@@ -3,35 +3,53 @@
 // Curates a set of Facebook posts into JSON files consumable by the `socials`
 // block. Each output file conforms to {url, date, title, thumbnail}.
 //
-// The FB CDN image URLs in facebook-posts.json expire, and in this environment
-// we cannot download them. Instead we pair each curated post with an existing
-// ride photo from images/ using a hand-picked mapping.
+// Downloads each curated post's thumbnail from the FB CDN on first run.
+// URLs expire, so re-download only happens when the local file is missing.
 
 import { join } from "node:path";
 import { exists, fs, path, readJson, write } from "./utils.js";
 
 const SOURCE = path("facebook-posts.json");
 const POSTS_DIR = path("facebook-posts");
-const IMAGES_DIR = path("images");
+const FB_IMAGES_DIR = path("images", "facebook");
 
-// Hand-curated mapping: source post index -> local thumbnail filename.
-// Chosen for posts with substantive, factual, or high-signal content.
-const CURATED = [
-  { idx: 0, image: "IMG_2860.jpeg" },
-  { idx: 4, image: "IMG_0830.jpeg" },
-  { idx: 7, image: "IMG_2835.jpeg" },
-  { idx: 15, image: "IMG_0805.jpeg" },
-  { idx: 25, image: "IMG_0831.jpeg" },
-  { idx: 29, image: "IMG_2819.jpeg" },
-  { idx: 30, image: "IMG_0249.jpeg" },
-  { idx: 37, image: "IMG_2825.jpeg" },
-  { idx: 38, image: "IMG_2845.jpeg" },
-  { idx: 42, image: "IMG_1146.jpeg" },
-  { idx: 55, image: "IMG_0806.jpeg" },
-  { idx: 57, image: "IMG_0807.jpeg" },
-  { idx: 58, image: "IMG_1079.jpeg" },
-  { idx: 64, image: "IMG_0870.png" },
-];
+// Source post indices chosen for substantive, factual, or high-signal content.
+const CURATED = [0, 4, 7, 15, 25, 29, 30, 37, 38, 42, 55, 57, 58, 64];
+
+const pickMediaUrl = (post) => {
+  for (const m of post.media || []) {
+    const url = m.photo_image?.uri || m.image?.uri || m.thumbnail;
+    if (url) return url;
+  }
+  return null;
+};
+
+const UA =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 " +
+  "(KHTML, like Gecko) Version/17.0 Safari/605.1.15";
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const fetchWithRetry = async (url, attempts = 5) => {
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    if (attempt > 0) await sleep(1000 * 2 ** attempt);
+    const res = await fetch(url, { headers: { "User-Agent": UA } });
+    if (res.ok || (res.status !== 503 && res.status !== 429)) return res;
+  }
+  return null;
+};
+
+const downloadImage = async (url, dest) => {
+  if (await exists(dest)) return true;
+  const res = await fetchWithRetry(url);
+  if (res?.ok) {
+    await write(dest, res);
+    return true;
+  }
+  const reason = res ? `Failed ${res.status}` : "Gave up after retries";
+  console.warn(`${reason}: ${url.slice(0, 80)}…`);
+  return false;
+};
 
 const findPublishTime = (obj, depth = 0) => {
   if (depth > 5 || !obj) return null;
@@ -109,6 +127,29 @@ const slugFromDate = (timestamp, idx) => {
   return `${iso.slice(0, 10)}-${String(idx).padStart(3, "0")}`;
 };
 
+const processPost = async (post, ts, idx) => {
+  if (!post) return console.warn(`No post at idx ${idx}`);
+
+  const imageUrl = pickMediaUrl(post);
+  if (!imageUrl) return console.warn(`No media URL for idx ${idx}`);
+
+  const slug = slugFromDate(ts, idx);
+  const imageName = `${slug}.jpg`;
+  if (!(await downloadImage(imageUrl, join(FB_IMAGES_DIR, imageName)))) return;
+
+  const record = {
+    thumbnail: `/images/facebook/${imageName}`,
+    title: deriveTitle(post.text || ""),
+    date: new Date(ts * 1000).toISOString(),
+    url: post.url,
+  };
+  await write(
+    join(POSTS_DIR, `${slug}.json`),
+    `${JSON.stringify(record, null, 2)}\n`,
+  );
+  console.log(`${slug}.json`);
+};
+
 const main = async () => {
   if (!(await exists(SOURCE))) {
     console.error(`Missing ${SOURCE}`);
@@ -118,34 +159,12 @@ const main = async () => {
   const posts = await readJson(SOURCE);
   const dates = interpolateDates(posts);
 
+  fs.rm(POSTS_DIR);
   fs.mkdir(POSTS_DIR);
+  fs.mkdir(FB_IMAGES_DIR);
 
-  for (const { idx, image } of CURATED) {
-    const post = posts[idx];
-    if (!post) {
-      console.warn(`No post at idx ${idx}`);
-      continue;
-    }
-    const imagePath = join(IMAGES_DIR, image);
-    if (!(await exists(imagePath))) {
-      console.warn(`Missing image ${image} for idx ${idx}`);
-      continue;
-    }
-
-    const ts = dates[idx];
-    const slug = slugFromDate(ts, idx);
-    const record = {
-      thumbnail: `/images/${image}`,
-      title: deriveTitle(post.text || ""),
-      date: new Date(ts * 1000).toISOString(),
-      url: post.url,
-    };
-
-    await write(
-      join(POSTS_DIR, `${slug}.json`),
-      `${JSON.stringify(record, null, 2)}\n`,
-    );
-    console.log(`${slug}.json`);
+  for (const idx of CURATED) {
+    await processPost(posts[idx], dates[idx], idx);
   }
 };
 
