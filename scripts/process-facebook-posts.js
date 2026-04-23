@@ -16,9 +16,16 @@ const FB_IMAGES_DIR = path("images", "facebook");
 // Source post indices chosen for substantive, factual, or high-signal content.
 const CURATED = [0, 4, 7, 15, 25, 29, 30, 37, 38, 42, 55, 57, 58, 64];
 
+// Prefer the largest CDN variant FB gives us: for videos, `thumbnail` /
+// `preferred_thumbnail` are rendered at ~960px while `image.uri` is a tiny
+// preview; for photos all three point at the full-size original.
 const pickMediaUrl = (post) => {
   for (const m of post.media || []) {
-    const url = m.photo_image?.uri || m.image?.uri || m.thumbnail;
+    const url =
+      m.preferred_thumbnail?.image?.uri ||
+      m.photo_image?.uri ||
+      m.thumbnail ||
+      m.image?.uri;
     if (url) return url;
   }
   return null;
