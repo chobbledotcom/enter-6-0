@@ -6,10 +6,11 @@
  * without deleting any extra scripts we've added locally
  */
 
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
 import { $ } from "bun";
-import { mkdtemp, rm } from "fs/promises";
-import { tmpdir } from "os";
-import { dirname, join } from "path";
+import { copyDir } from "./utils.js";
 
 const REPO_URL = "https://github.com/chobbledotcom/chobble-client.git";
 const SCRIPT_DIR = dirname(import.meta.path);
@@ -28,8 +29,9 @@ async function main() {
 
     console.log("Copying scripts...");
 
-    // rsync: copy files, preserve structure, don't delete extras, exclude this script
-    await $`rsync -av --exclude='update-scripts.js' --exclude='update-scripts.sh' ${sourceDir}/ ${SCRIPT_DIR}/`;
+    copyDir(sourceDir, SCRIPT_DIR, {
+      exclude: ["update-scripts.js", "update-scripts.sh"],
+    });
 
     console.log("Done! Your local-only scripts have been preserved.");
   } catch (error) {

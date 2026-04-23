@@ -6,15 +6,16 @@ eleventyNavigation:
   order: 1
 blocks:
   - type: video-background
-    full_width: true
     video_id: "https://iframe.mediadelivery.net/embed/588034/72c13f1f-5200-4268-9061-0f45809df741?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
       ![Enter 6.0](/assets/logo.png)
     video_title: "EnteR 6.0 Extreme Ride"
 
   - type: section-header
-    title: "THE EXTREME"
-    subtitle: "Redefining the limits of excitement"
+    intro: |
+      ## THE EXTREME
+
+      Redefining the limits of excitement
 
   - type: features
     items:
@@ -35,7 +36,6 @@ blocks:
         description: "Manufactured in the UK by Tivoli Enterprises. Dual hydraulic and mechanical locking on every seat, continuously monitored by the onboard computer. Thorough daily inspections carried out and recorded."
 
   - type: video-background
-    full_width: true
     video_id: "https://iframe.mediadelivery.net/embed/588034/a79f990b-d7d7-4bd0-a7e3-af2c875b1580?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
     content: |
       ## Coming to a fair near you

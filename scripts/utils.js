@@ -1,4 +1,13 @@
-import { cpSync, existsSync, mkdirSync, renameSync, rmSync } from "node:fs";
+import {
+  chmodSync,
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  renameSync,
+  rmSync,
+  statSync,
+} from "node:fs";
 import { extname, join, resolve } from "node:path";
 
 // Paths
@@ -50,21 +59,87 @@ export const git = {
     ]),
 };
 
-// Rsync commands
-const rsyncExcludes = (list) => list.flatMap((e) => ["--exclude", e]);
-const rsyncIncludes = (list) => list.flatMap((e) => ["--include", e]);
+// Directory sync (replaces rsync)
+const globToRegex = (pattern) => {
+  const escaped = pattern.replace(/[.+^${}()|[\]\\]/g, "\\$&");
+  const globs = escaped
+    .replaceAll("**", "\0")
+    .replaceAll("*", "[^/]*")
+    .replaceAll("\0", ".*");
+  return new RegExp(`^${globs}$`);
+};
 
-export const rsync = (src, dest, opts = {}) =>
-  run([
-    "rsync",
-    "--recursive",
-    ...(opts.update ? ["--update"] : []),
-    ...(opts.delete ? ["--delete"] : []),
-    ...rsyncExcludes(opts.exclude || []),
-    ...rsyncIncludes(opts.include || []),
-    src.endsWith("/") ? src : `${src}/`,
-    dest.endsWith("/") ? dest : `${dest}/`,
-  ]);
+const isExcluded = (name, relPath, excludes) =>
+  excludes.some((p) => {
+    const regex = globToRegex(p);
+    return regex.test(name) || regex.test(relPath);
+  });
+
+const isNewer = (srcPath, destPath) =>
+  !existsSync(destPath) ||
+  statSync(srcPath).mtimeMs > statSync(destPath).mtimeMs;
+
+const shouldCopy = (srcPath, destPath, update) =>
+  !update || isNewer(srcPath, destPath);
+
+const copyFile = (srcPath, destPath) => {
+  cpSync(srcPath, destPath);
+  chmodSync(destPath, statSync(srcPath).mode);
+};
+
+const entryRelPath = (relBase, name) => (relBase ? `${relBase}/${name}` : name);
+
+const copyRecursive = (src, dest, excludes, update, relBase = "") => {
+  mkdirSync(dest, { recursive: true });
+  for (const entry of readdirSync(src, { withFileTypes: true })) {
+    const relPath = entryRelPath(relBase, entry.name);
+    if (isExcluded(entry.name, relPath, excludes)) continue;
+    const srcPath = join(src, entry.name);
+    const destPath = join(dest, entry.name);
+    if (entry.isDirectory()) {
+      copyRecursive(srcPath, destPath, excludes, update, relPath);
+    } else if (shouldCopy(srcPath, destPath, update)) {
+      copyFile(srcPath, destPath);
+    }
+  }
+};
+
+const removeIfMissing = (destPath, srcPath, relPath, excludes) => {
+  if (!existsSync(srcPath)) rmSync(destPath, { recursive: true, force: true });
+  else if (statSync(destPath).isDirectory())
+    deleteMissing(destPath, srcPath, relPath, excludes);
+};
+
+const deleteMissing = (dest, src, relBase, excludes) => {
+  if (!existsSync(dest)) return;
+  for (const entry of readdirSync(dest, { withFileTypes: true })) {
+    const relPath = entryRelPath(relBase, entry.name);
+    if (isExcluded(entry.name, relPath, excludes)) continue;
+    removeIfMissing(
+      join(dest, entry.name),
+      join(src, entry.name),
+      relPath,
+      excludes,
+    );
+  }
+};
+
+export const copyDir = (src, dest, opts = {}) => {
+  const excludes = opts.exclude || [];
+  if (opts.delete) deleteMissing(dest, src, "", excludes);
+  copyRecursive(src, dest, excludes, opts.update || false);
+};
+
+export const mergeTemplateAndSource = (template, source, dest, opts = {}) => {
+  copyDir(template, dest, {
+    delete: opts.delete,
+    exclude: opts.templateExcludes || [],
+  });
+  copyDir(source, join(dest, "src"), {
+    update: opts.update,
+    exclude: opts.sourceExcludes || [],
+  });
+};
 
 // Bun commands
 export const bun = {

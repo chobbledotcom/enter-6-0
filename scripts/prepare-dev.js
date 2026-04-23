@@ -1,33 +1,25 @@
 import { join } from "node:path";
-import { buildDir, templateRepo } from "./consts.js";
-import { bun, find, fs, git, path, root, rsync } from "./utils.js";
+import {
+  buildDir,
+  sourceExcludes,
+  templateExcludes,
+  templateRepo,
+} from "./consts.js";
+import {
+  bun,
+  copyDir,
+  find,
+  fs,
+  git,
+  mergeTemplateAndSource,
+  path,
+  root,
+} from "./utils.js";
 
 const build = path(buildDir);
 const template = path(buildDir, "template");
 const dev = path(buildDir, "dev");
 const localTemplate = join(root, "..", "chobble-template");
-
-const templateExcludes = [
-  ".git",
-  "node_modules",
-  "*.md",
-  "test",
-  "test-*",
-  ".image-cache",
-];
-const rootExcludes = [
-  ".git",
-  ".direnv",
-  "*.nix",
-  "README.md",
-  buildDir,
-  "scripts",
-  "node_modules",
-  "package*.json",
-  "bun.lock",
-  "old_site",
-  ...(process.env.PLACEHOLDER_IMAGES === "1" ? ["images"] : []),
-];
 
 export const prep = () => {
   console.log("Preparing build...");
@@ -35,7 +27,10 @@ export const prep = () => {
 
   if (fs.exists(localTemplate)) {
     console.log("Using local template from ../chobble-template...");
-    rsync(localTemplate, template, { delete: true, exclude: [".git", "node_modules"] });
+    copyDir(localTemplate, template, {
+      delete: true,
+      exclude: templateExcludes,
+    });
   } else if (!fs.exists(join(template, ".git"))) {
     console.log("Cloning template...");
     fs.rm(template);
@@ -47,8 +42,11 @@ export const prep = () => {
   }
 
   find.deleteByExt(dev, ".md");
-  rsync(template, dev, { delete: true, exclude: templateExcludes });
-  rsync(root, join(dev, "src"), { exclude: rootExcludes });
+  mergeTemplateAndSource(template, root, dev, {
+    delete: true,
+    templateExcludes,
+    sourceExcludes,
+  });
 
   sync();
 
@@ -62,10 +60,9 @@ export const prep = () => {
 };
 
 export const sync = () => {
-  rsync(root, join(dev, "src"), {
+  copyDir(root, join(dev, "src"), {
     update: true,
-    exclude: rootExcludes,
-    include: ["*/", "**/*.md", "**/*.scss"],
+    exclude: sourceExcludes,
   });
 };
 

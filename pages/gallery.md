@@ -8,7 +8,6 @@ meta_title: "Gallery - EnteR 6.0"
 meta_description: "Photos and videos of the EnteR 6.0 Extreme fairground ride."
 blocks:
   - type: video-background
-    full_width: true
     video_id: "fOdSi9Uaxds"
     content: |
       # Gallery
@@ -17,14 +16,15 @@ blocks:
     video_title: "EnteR 6.0 Gallery"
 
   - type: image-background
-    full_width: true
     image: "src/images/IMG_2835.jpeg"
     image_alt: "EnteR 6.0 sound system full setup"
     content: " "
 
   - type: section-header
-    title: "THE SYSTEM"
-    subtitle: "Built for the road. Designed for impact."
+    intro: |
+      ## THE SYSTEM
+
+      Built for the road. Designed for impact.
 
   - type: image-cards
     image_aspect_ratio: "4/3"
@@ -40,14 +40,15 @@ blocks:
         description: "Mid and top end cabinets ready for deployment."
 
   - type: image-background
-    full_width: true
     image: "src/images/IMG_2860.jpeg"
     image_alt: "EnteR 6.0 panoramic view"
     content: " "
 
   - type: section-header
-    title: "ON THE ROAD"
-    subtitle: "From build to showground"
+    intro: |
+      ## ON THE ROAD
+
+      From build to showground
 
   - type: image-cards
     image_aspect_ratio: "4/3"
@@ -66,14 +67,15 @@ blocks:
         description: "System assembly on the ground."
 
   - type: image-background
-    full_width: true
     image: "src/images/IMG_2819.jpeg"
     image_alt: "EnteR 6.0 system close-up"
     content: " "
 
   - type: section-header
-    title: "THE DETAILS"
-    subtitle: "Every component purpose-built"
+    intro: |
+      ## THE DETAILS
+
+      Every component purpose-built
 
   - type: image-cards
     image_aspect_ratio: "1/1"
@@ -99,7 +101,6 @@ blocks:
         description: "Maximum output at the fair."
 
   - type: image-background
-    full_width: true
     image: "src/images/IMG_0808.jpeg"
     image_alt: "EnteR 6.0 system detail"
     content: " "
