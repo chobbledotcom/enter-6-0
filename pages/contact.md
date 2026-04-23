@@ -5,7 +5,7 @@ meta_title: Contact
 meta_description: Get in touch with EnteR 6.0
 eleventyNavigation:
   key: Contact
-  order: 2
+  order: 6
 blocks:
   - type: section-header
     intro: |
@@ -19,10 +19,14 @@ blocks:
 
       Fill in the form and we'll get back to you.
 
-  - type: markdown
-    content: |
+  - type: icon-links
+    intro: |
       ## Find Us Online
-
-      - [EnteR 6.0 on Facebook](https://www.facebook.com/p/EnteR-60-61573987298846/)
-      - [EnteR 6.0 on Coasterpedia](https://coasterpedia.net/wiki/EnteR_6.0)
+    items:
+      - icon: "mdi:facebook"
+        text: "EnteR 6.0 on Facebook"
+        url: "https://www.facebook.com/p/EnteR-60-61573987298846/"
+      - icon: "mdi:roller-skate"
+        text: "EnteR 6.0 on Coasterpedia"
+        url: "https://coasterpedia.net/wiki/EnteR_6.0"
 ---

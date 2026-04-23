@@ -3,7 +3,7 @@ permalink: "/gallery/"
 layout: "design-system-base.html"
 eleventyNavigation:
   key: Gallery
-  order: 2
+  order: 7
 meta_title: "Gallery - EnteR 6.0"
 meta_description: "Photos and videos of the EnteR 6.0 Extreme fairground ride."
 blocks:
