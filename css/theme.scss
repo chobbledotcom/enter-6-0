@@ -72,7 +72,8 @@ header {
   --color-text: #ffffff;
 
   img {
-    max-width: 40rem;
+    max-width: min(40rem, 100%);
+    height: auto;
     margin: 0 auto;
     justify-self: center;
   }
