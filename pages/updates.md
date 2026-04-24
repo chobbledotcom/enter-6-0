@@ -14,6 +14,7 @@ blocks:
       Drops from the algorithm. Follow along on [Facebook](https://www.facebook.com/p/EnteR-60-61573987298846/) for everything.
 
   - type: socials
+    masonry: true
     directory: "facebook-posts"
 
   - type: cta
