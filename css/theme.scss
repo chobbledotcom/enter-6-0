@@ -69,3 +69,24 @@ header {
     justify-self: center;
   }
 }
+
+// Full-screen WebGL lightning background. Sits above content but below the
+// sticky nav (z-sticky = 200), using screen blend so only the bright neon
+// arcs show — dark pixels disappear and text stays readable.
+#lightning-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: screen;
+  // Hint that this element moves every frame — keeps it on its own GPU layer
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lightning-bg {
+    opacity: 0.35;
+  }
+}
