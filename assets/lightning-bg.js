@@ -48,7 +48,7 @@ void main() { gl_Position = vec4(a_position, 0.0, 1.0); }`;
     float flashPhase = fract(t * 0.17);
     float flash = smoothstep(0.85, 1.0, flashPhase) *
                   (1.0 - smoothstep(0.97, 1.0, flashPhase));
-    col += flash * vec3(0.3, 1.0, 0.6) * 0.25;
+    col += flash * vec3(0.3, 1.0, 0.6) * 0.18;
 
     // Soft horizon haze near the bolts
     float haze = fbm(uv * 2.5 + vec2(t * 0.08, 0.0));
@@ -58,9 +58,18 @@ void main() { gl_Position = vec4(a_position, 0.0, 1.0); }`;
     float vig = 1.0 - 0.35 * dot(uv, uv);
     col *= vig;
 
+    // Overall dim now that we're rendered behind the page rather than
+    // screen-blended on top — keeps the palette feeling restrained.
+    col *= 0.55;
+
     // Soft tonemap so highlights hold their colour
     col = col / (1.0 + col);
     col = pow(col, vec3(0.9));
+
+    // Sit on a slightly lit near-black so the viewport base tone matches
+    // the page's html background rather than flashing pure black.
+    vec3 base = vec3(0.006, 0.012, 0.020);
+    col = max(col, base);
 
     outColor = vec4(col, 1.0);
   `;
